@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>apply</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-size: 24px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .block {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px;
+            width: calc(25% - 20px);
+            transition: transform 0.2s;
+        }
+        .block:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .loan-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .loan-form label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .loan-form input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+        .apply-button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Hope
+    </header>
+    <div class="container">
+        <div class="block" id="loanRequestBlock">
+            <h2>Loan Request</h2>
+            <form class="loan-form" name="loan-form" action="/apply" method="POST">
+                <label for="loanAmount">Loan Amount</label>
+                <input type="number" id="loanAmount" name="total_amount" placeholder="Enter Loan Amount" required>
+                <label for="installments">Number of Installments - Weekly</label>
+                <input type="number" id="installments" name="num_installments" placeholder="Enter Number of Installments" required>
+                <input type="text" name="username" hidden>
+                <button type="submit" class="apply-button">submit</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementsByName("username")[0].value=localStorage.getItem("username")
+    </script>
+
+</body>
+</html>
